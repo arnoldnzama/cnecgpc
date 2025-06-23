@@ -120,17 +120,17 @@
   right: 40px;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #0077ff 60%, #00ff99 100%);
+  background: linear-gradient(135deg, #00a651 60%, #0d8657 100%);
   color: white;
   border: none;
   border-radius: 50%;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  cursor: pointer;
+  cursor: button;
   opacity: 0;
   visibility: hidden;
   z-index: 999;
   font-size: 2rem;
-  transition: opacity 0.4s, transform 0.4s;
+  transition: all 0.4s ease;
   transform: translateY(40px) scale(0.8);
 }
 #backToTop.show {
@@ -139,7 +139,7 @@
   transform: translateY(0) scale(1);
 }
 #backToTop:hover {
-  background: linear-gradient(135deg, #00ff99 0%, #0077ff 100%);
+  background: linear-gradient(135deg, #0d8657 0%, #00a651 100%);
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   transform: scale(1.1);
 }
