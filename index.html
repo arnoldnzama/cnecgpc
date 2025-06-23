@@ -1,0 +1,970 @@
+<style>
+    @keyframes fade-in-up {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fade-in-up 0.8s ease-out forwards;
+    }
+    .animate-fade-in-up.delay-100 { animation-delay: 0.1s; }
+    .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+    .animate-fade-in-up.delay-300 { animation-delay: 0.3s; }
+    .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+    .animate-fade-in-up.delay-500 { animation-delay: 0.5s; }
+    .animate-fade-in-up.delay-600 { animation-delay: 0.6s; }
+  </style>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institution de Développement Économique - RDC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00a651',
+            secondary: '#0d8657',
+            dark: '#1a1a1a',
+            light: '#f8f9fa'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(2,150,66,0.9) 0%, rgba(2,150,66,0.7) 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #00a651;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scale-in {
+      transform: scale(0.98);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scale-in.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<html lang="fr" class="scroll-smooth">
+<body class="min-h-screen bg-white font-sans text-gray-800">
+  <!-- Header -->
+  <header class="w-full bg-white/90 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between border-b border-gray-100">
+      <div class="flex items-center">
+        <!-- Ajoutez ceci où vous souhaitez afficher le logo et le lien -->
+<a href="index.html" class="text-primary text-3xl font-display flex items-center space-x-2">
+  <img src="img/logo_CNECGPC.png" alt="Logo CNECGPC" class="h-20 w-auto" />
+  
+</a>
+        <nav class="hidden lg:flex ml-10">
+          <a href="index.html" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Accueil</a>
+          <a href="propos.html" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">À propos</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Services</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Projets</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Actualités</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Contact</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="lg:hidden text-gray-700">
+          <i class="ri-menu-line text-2xl"></i>
+        </button>
+        <a href="#" class="bg-primary text-white px-4 sm:px-6 py-2 rounded-button whitespace-nowrap hover:bg-secondary transition-colors">Rejoignez-nous</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="w-full relative pt-40 pb-16 md:pt-56 md:pb-24 hero-gradient fade-in">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518455027249-c2c7a9a57daf?q=80&w=1000')] bg-cover bg-center opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="w-full lg:w-1/2">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">Transformer l'économie de la RDC ensemble</h1>
+          <p class="text-white text-lg md:text-xl mb-8 opacity-90">Nous sommes l'institution leader dans la promotion du développement économique durable en République Démocratique du Congo.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#" class="bg-[#d61323] text-white px-6 py-3 rounded-button font-medium text-center hover:bg-[#b3101d] transition-colors inline-flex items-center justify-center gap-2">
+              <i class="ri-play-circle-line"></i> Regarder la vidéo
+            </a>
+            <a href="#" class="bg-[#029642] text-white px-6 py-3 rounded-button font-medium text-center hover:bg-[#027d38] transition-colors">
+              Découvrir nos missions
+            </a>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2 hidden lg:block">
+          <div class="relative">
+            <div class="bg-white p-6 rounded-xl shadow-xl max-w-md mx-auto animate-float">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                  <i class="ri-line-chart-line text-primary text-2xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg">Croissance économique</h3>
+                  <p class="text-gray-600 text-sm">+7.2% en 2023</p>
+                </div>
+              </div>
+              <div class="h-2 bg-gray-200 rounded-full mb-4">
+                <div class="h-full bg-primary rounded-full" style="width: 72%"></div>
+              </div>
+              <div class="grid grid-cols-3 gap-4 text-center">
+                <div>
+                  <p class="text-2xl font-bold text-primary">45</p>
+                  <p class="text-sm text-gray-600">Projets actifs</p>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-primary">26</p>
+                  <p class="text-sm text-gray-600">Partenaires</p>
+                </div>
+                <div>
+                  <p class="text-2xl font-bold text-primary">12M</p>
+                  <p class="text-sm text-gray-600">Bénéficiaires</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-yellow-400 rounded-full opacity-20"></div>
+            <div class="absolute -top-8 -right-8 w-20 h-20 bg-blue-400 rounded-full opacity-20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coordinator Profile Section -->
+  <section class="py-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('img/texture.png')] opacity-5"></div>
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full"></div>
+    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-secondary/5 rounded-full"></div>
+    
+    <div class="container mx-auto px-4 relative">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <!-- Animated Photo -->
+        <div class="w-full lg:w-2/5 relative group">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-700 group-hover:shadow-xl group-hover:-translate-y-2">
+            <img src="img/BKT.jpg" alt="Monsieur BOLA NKUMU TOUSSAINT" 
+                 class="w-full h-auto scale-[1.01] group-hover:scale-100 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+          <div class="absolute -z-10 w-full h-full -bottom-4 -right-4 bg-primary/10 rounded-2xl transition-all duration-500 group-hover:bottom-0 group-hover:right-0"></div>
+          
+          <!-- Floating badges -->
+          <div class="absolute -left-4 -bottom-4 bg-white p-3 rounded-xl shadow-lg flex items-center gap-3 animate-float delay-100">
+            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+              <i class="ri-award-fill text-primary"></i>
+            </div>
+            <span class="font-medium">20+ ans d'expérience</span>
+          </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="w-full lg:w-3/5">
+          <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4 animate-fade-in-up">
+            Coordinateur Principal
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight animate-fade-in-up delay-100">
+            BOLA NKUMU TOUSSAINT
+          </h2>
+          <p class="text-xl text-primary font-medium mb-6 animate-fade-in-up delay-200">
+            Pilier du développement économique en RDC
+          </p>
+          
+          <div class="prose max-w-none text-gray-600 mb-8 space-y-4">
+            <p class="animate-fade-in-up delay-300">
+              <span class="inline-block w-6 h-1 bg-primary rounded-full mr-2 align-middle"></span>
+              Économiste visionnaire avec plus de deux décennies d'expertise en politiques économiques et développement stratégique en République Démocratique du Congo.
+            </p>
+            <p class="animate-fade-in-up delay-400">
+              <span class="inline-block w-6 h-1 bg-primary rounded-full mr-2 align-middle"></span>
+              Diplômé de l'Université de Kinshasa et titulaire d'un Master de la Sorbonne, il a dirigé avec succès plusieurs programmes nationaux de relance économique avant de prendre la tête de la CNECGPC en 2018.
+            </p>
+            <p class="animate-fade-in-up delay-500">
+              <span class="inline-block w-6 h-1 bg-primary rounded-full mr-2 align-middle"></span>
+              Architecte de plus de 45 projets structurants ayant généré une croissance économique significative dans les secteurs clés du pays.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4 animate-fade-in-up delay-600">
+            <a href="#" class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-secondary transition-all duration-300 hover:shadow-lg flex items-center">
+              <i class="ri-file-user-line mr-2"></i> CV Complet
+            </a>
+            <a href="#" class="bg-white text-primary border border-primary px-6 py-3 rounded-button font-medium hover:bg-gray-50 transition-all duration-300 hover:shadow-lg flex items-center">
+              <i class="ri-links-line mr-2"></i> Publications
+            </a>
+            <a href="#" class="bg-gray-900 text-white px-6 py-3 rounded-button font-medium hover:bg-gray-800 transition-all duration-300 hover:shadow-lg flex items-center">
+              <i class="ri-calendar-line mr-2"></i> Agenda
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Notre impact</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Catalyseur du développement économique congolais</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Depuis notre création, nous avons contribué significativement à la transformation économique de la RDC à travers des initiatives stratégiques et des partenariats innovants.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-funds-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-800">250+</h3>
+          <p class="text-gray-600 text-center">Projets financés</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-team-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-800">30M</h3>
+          <p class="text-gray-600 text-center">Bénéficiaires</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-building-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-800">45</h3>
+          <p class="text-gray-600 text-center">Bureaux régionaux</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+            <i class="ri-money-dollar-circle-line text-primary text-2xl"></i>
+          </div>
+          <h3 class="text-3xl font-bold text-gray-800">120M$</h3>
+          <p class="text-gray-600 text-center">Investissements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Notre mission</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Construire une économie prospère et inclusive</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Notre approche stratégique repose sur quatre piliers fondamentaux pour assurer un développement économique durable en RDC.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-8 rounded-xl shadow-sm flex flex-col items-center text-center card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+            <i class="ri-line-chart-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Croissance économique</h3>
+          <p class="text-gray-600">Stimuler une croissance économique durable et inclusive dans toutes les régions de la RDC.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm flex flex-col items-center text-center card-hover">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-500">
+            <i class="ri-user-star-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Développement humain</h3>
+          <p class="text-gray-600">Renforcer les capacités et compétences des populations locales pour une main-d'œuvre qualifiée.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm flex flex-col items-center text-center card-hover">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 text-green-500">
+            <i class="ri-recycle-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Durabilité</h3>
+          <p class="text-gray-600">Promouvoir des pratiques économiques respectueuses de l'environnement et des ressources naturelles.</p>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm flex flex-col items-center text-center card-hover">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 text-purple-500">
+            <i class="ri-global-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Intégration régionale</h3>
+          <p class="text-gray-600">Faciliter l'intégration économique de la RDC dans la région et sur la scène internationale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domains Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Nos secteurs</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Domaines d'intervention stratégiques</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Nous intervenons dans des secteurs clés pour maximiser notre impact sur le développement économique national.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-plant-line text-primary text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Agriculture moderne</h3>
+          <p class="text-gray-600 mb-4">Modernisation des techniques agricoles et soutien aux chaînes de valeur pour assurer la sécurité alimentaire et créer des emplois.</p>
+          <a href="#" class="text-primary font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-database-2-line text-blue-500 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Mines et ressources</h3>
+          <p class="text-gray-600 mb-4">Exploitation responsable et transformation locale des ressources minières pour maximiser la valeur ajoutée en RDC.</p>
+          <a href="#" class="text-blue-500 font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-lightbulb-line text-yellow-500 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Énergie durable</h3>
+          <p class="text-gray-600 mb-4">Développement des infrastructures énergétiques et promotion des énergies renouvelables pour soutenir la croissance économique.</p>
+          <a href="#" class="text-yellow-500 font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-bank-line text-purple-500 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Finance inclusive</h3>
+          <p class="text-gray-600 mb-4">Facilitation de l'accès aux services financiers pour les entrepreneurs et les PME locales afin de stimuler l'entrepreneuriat.</p>
+          <a href="#" class="text-purple-500 font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-cyan-50 to-cyan-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-road-map-line text-cyan-500 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Infrastructures</h3>
+          <p class="text-gray-600 mb-4">Construction et réhabilitation des infrastructures essentielles pour faciliter les échanges commerciaux et le développement.</p>
+          <a href="#" class="text-cyan-500 font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+            <i class="ri-graduation-cap-line text-orange-500 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Formation professionnelle</h3>
+          <p class="text-gray-600 mb-4">Renforcement des compétences techniques et managériales pour répondre aux besoins du marché du travail.</p>
+          <a href="#" class="text-orange-500 font-medium inline-flex items-center group">
+            En savoir plus
+            <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="w-full lg:w-1/2">
+          <div class="relative rounded-xl overflow-hidden shadow-lg">
+            <img src="img/PR-12-2023.jpeg" alt="Projet agricole" class="w-full h-auto">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h3 class="text-white text-xl font-bold">Projet Agri-Plus</h3>
+              <p class="text-white/80">Province du Kongo Central</p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Projet vedette</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Modernisation de l'agriculture dans le Kongo Central</h2>
+          <p class="text-gray-600 mb-6">Notre projet phare vise à transformer le secteur agricole dans la province du Kongo Central en introduisant des techniques modernes, en améliorant l'accès au marché et en formant les agriculteurs locaux.</p>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div>
+              <p class="text-3xl font-bold text-primary mb-2">5,000+</p>
+              <p class="text-gray-600">Agriculteurs formés</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-primary mb-2">120%</p>
+              <p class="text-gray-600">Augmentation des rendements</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-primary mb-2">15M$</p>
+              <p class="text-gray-600">Investissement total</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-primary mb-2">2026</p>
+              <p class="text-gray-600">Date de complétion</p>
+            </div>
+          </div>
+          <a href="#" class="bg-primary text-white px-6 py-3 rounded-button font-medium inline-flex items-center hover:bg-secondary transition-colors">
+            Voir tous nos projets
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Publications</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Actualités</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Restez informé de nos dernières activités.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover">
+          <div class="h-48 bg-gray-200 overflow-hidden">
+            <img src="img/6E9CA787-601B-4CCD-8BBE-D74384188A7D.webp" alt="Lancement du nouveau programme agricole" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-primary font-medium">12 Mars 2025</span>
+            <h3 class="text-xl font-semibold my-2">Lancement du nouveau programme agricole</h3>
+            <p class="text-gray-600 mb-4">CNECGPC lance un nouveau programme pour moderniser l'agriculture dans la région du Kasaï.</p>
+            <a href="#" class="text-primary font-medium inline-flex items-center group">
+              Lire plus
+              <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover">
+          <div class="h-48 bg-gray-200 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=1000" alt="Partenariat avec la Banque Mondiale" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-primary font-medium">5 Mars 2025</span>
+            <h3 class="text-xl font-semibold my-2">Partenariat avec la Banque Mondiale</h3>
+            <p class="text-gray-600 mb-4">Signature d'un accord historique pour financer des infrastructures clés en RDC.</p>
+            <a href="#" class="text-primary font-medium inline-flex items-center group">
+              Lire plus
+              <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover">
+          <div class="h-48 bg-gray-200 overflow-hidden">
+            <img src="img/maarifa-forma-entrepreneurs-vus.jpg" alt="Actualité 3" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-primary font-medium">28 Février 2025</span>
+            <h3 class="text-xl font-semibold my-2">Formation des entrepreneurs locaux</h3>
+            <p class="text-gray-600 mb-4">Plus de 500 entrepreneurs formés aux techniques de gestion moderne à Kinshasa.</p>
+            <a href="#" class="text-primary font-medium inline-flex items-center group">
+              Lire plus
+              <i class="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" class="bg-primary text-white px-6 py-3 rounded-button font-medium inline-flex items-center hover:bg-secondary transition-colors">
+          Voir toutes les actualités
+          <i class="ri-arrow-right-line ml-2"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section class="py-16 bg-gray-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('img/texture.png')] opacity-5"></div>
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full"></div>
+    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-secondary/5 rounded-full"></div>
+    
+    <div class="container mx-auto px-4 relative">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Agenda</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Événements à venir</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Découvrez nos prochains événements et conférences sur le développement économique en RDC.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Event 1 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl">
+          <div class="relative h-48 overflow-hidden">
+            <img src="img/cjonrwbcppmm3dho72vg.png" alt="Conférence économique" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+            <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">15 Juin</div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 bg-primary rounded-full"></span>
+              <span class="text-sm text-gray-500">Conférence</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Forum économique national</h3>
+            <p class="text-gray-600 mb-4">Discussion sur les perspectives économiques 2024-2025 avec les principaux acteurs du secteur.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="ri-map-pin-line"></i>
+                <span>Kinshasa</span>
+              </div>
+              <a href="#" class="text-primary font-medium hover:text-secondary transition-colors">
+                Plus d'infos <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl">
+          <div class="relative h-48 overflow-hidden">
+            <img src="img/unnamed-7-1-scaled.jpg" alt="Réunion sectorielle" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+            <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">22 Juin</div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+              <span class="text-sm text-gray-500">Réunion</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Secteur minier - Perspectives</h3>
+            <p class="text-gray-600 mb-4">Échanges sur les nouvelles réglementations et opportunités dans le secteur minier congolais.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="ri-map-pin-line"></i>
+                <span>Lubumbashi</span>
+              </div>
+              <a href="#" class="text-blue-500 font-medium hover:text-blue-600 transition-colors">
+                Plus d'infos <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:scale-[1.02] hover:shadow-xl">
+          <div class="relative h-48 overflow-hidden">
+            <img src="img/DSC_0065-scaled.jpg" alt="Atelier formation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+            <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">5 Juil</div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span class="text-sm text-gray-500">Atelier</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Formation entrepreneurs</h3>
+            <p class="text-gray-600 mb-4">Atelier pratique sur la gestion financière et le développement commercial pour PME.</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2 text-gray-500">
+                <i class="ri-map-pin-line"></i>
+                <span>Goma</span>
+              </div>
+              <a href="#" class="text-green-500 font-medium hover:text-green-600 transition-colors">
+                Plus d'infos <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" class="bg-primary text-white px-6 py-3 rounded-button font-medium inline-flex items-center hover:bg-secondary transition-colors">
+          Voir tout l'agenda
+          <i class="ri-arrow-right-line ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Ressources</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Documents et rapports</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Accédez à nos publications et rapports techniques.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 card-hover">
+          <div class="h-48 bg-gray-100 flex items-center justify-center">
+            <i class="ri-file-pdf-line text-6xl text-red-500"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-500">Rapport annuel • 2023</span>
+            <h3 class="text-xl font-semibold my-2">Rapport d'activités 2023</h3>
+            <p class="text-gray-600 mb-4">Bilan complet de nos réalisations et impacts économiques en 2023.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">PDF • 5.2MB</span>
+              <a href="doc/cahier de charge CNECGPC.pdf" class="text-primary font-medium inline-flex items-center group">
+                Télécharger
+                <i class="ri-download-line ml-2 group-hover:translate-y-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 card-hover">
+          <div class="h-48 bg-gray-100 flex items-center justify-center">
+            <i class="ri-file-chart-line text-6xl text-blue-500"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-500">Étude • Mars 2024</span>
+            <h3 class="text-xl font-semibold my-2">Perspectives économiques 2024-2026</h3>
+            <p class="text-gray-600 mb-4">Analyse des tendances et projections pour l'économie congolaise.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">PDF • 3.8MB</span>
+              <a href="doc/COUT DE LA MISE EN PLACE CNECGPC.pdf" class="text-primary font-medium inline-flex items-center group">
+                Télécharger
+                <i class="ri-download-line ml-2 group-hover:translate-y-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 card-hover">
+          <div class="h-48 bg-gray-100 flex items-center justify-center">
+            <i class="ri-file-text-line text-6xl text-green-500"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-sm text-gray-500">Guide • Février 2025</span>
+            <h3 class="text-xl font-semibold my-2">Guide des investisseurs en RDC</h3>
+            <p class="text-gray-600 mb-4">Toutes les informations pratiques pour investir en République Démocratique du Congo.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">PDF • 7.1MB</span>
+              <a href="doc/Presentation_CNECGPC.pdf" class="text-primary font-medium inline-flex items-center group">
+                Télécharger
+                <i class="ri-download-line ml-2 group-hover:translate-y-0.5 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="#" class="bg-primary text-white px-6 py-3 rounded-button font-medium inline-flex items-center hover:bg-secondary transition-colors">
+          Voir tous les documents
+          <i class="ri-arrow-right-line ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Collaborations</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Nos partenaires stratégiques</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Nous travaillons avec des institutions locales et internationales pour maximiser notre impact sur le développement économique de la RDC.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="img/logo_CNECGPC.png" alt="Banque Mondiale" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="logo/pnud.jpg" alt="PNUD" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="logo/banque africaine.jpg" alt="Banque Africaine de Développement" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="logo/finance.jpg" alt="Ministère des Finances RDC" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="logo/unesco.png" alt="UNESCO" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+        <div class="flex items-center justify-center h-32 p-4">
+          <img src="logo/Flag_of_Europe.svg.png" alt="Union Européenne" class="h-20 object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-16 bg-primary">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Restez informé de nos activités</h2>
+      <p class="text-white text-lg mb-8 max-w-2xl mx-auto opacity-90">Abonnez-vous à notre newsletter pour recevoir les dernières actualités sur nos projets et initiatives de développement économique en RDC.</p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
+        <input type="email" placeholder="Votre adresse email" class="w-full px-4 py-3 rounded-button border-none text-gray-700 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary">
+        <button class="bg-white text-primary px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-gray-100 transition-colors">S'abonner</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collaboration Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">Engagement</span>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Collaborer avec nous</h2>
+        <p class="text-gray-600 max-w-3xl mx-auto">Plusieurs façons de contribuer à notre mission de développement économique en République Démocratique du Congo.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 text-primary">
+            <i class="ri-hand-heart-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Devenir partenaire</h3>
+          <p class="text-gray-600 mb-6">Établissez un partenariat stratégique pour amplifier votre impact et contribuer au développement économique de la RDC.</p>
+          <a href="#" class="bg-primary/10 text-primary px-6 py-2 rounded-button font-medium inline-flex items-center hover:bg-primary/20 transition-colors">
+            Nous contacter
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-500">
+            <i class="ri-funds-box-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Financer un projet</h3>
+          <p class="text-gray-600 mb-6">Investissez dans des projets à fort impact social et économique avec un retour sur investissement mesurable et transparent.</p>
+          <a href="#" class="bg-blue-100 text-blue-500 px-6 py-2 rounded-button font-medium inline-flex items-center hover:bg-blue-200 transition-colors">
+            Découvrir les projets
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 card-hover">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6 text-yellow-500">
+            <i class="ri-team-line text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Rejoindre l'équipe</h3>
+          <p class="text-gray-600 mb-6">Mettez vos compétences au service du développement économique en rejoignant notre équipe dynamique et engagée.</p>
+          <a href="#" class="bg-yellow-100 text-yellow-500 px-6 py-2 rounded-button font-medium inline-flex items-center hover:bg-yellow-200 transition-colors">
+            Voir les offres
+            <i class="ri-arrow-right-line ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-primary to-secondary">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Prêt à transformer l'économie de la RDC ensemble ?</h2>
+      <p class="text-white text-lg mb-8 max-w-2xl mx-auto opacity-90">Contactez-nous dès aujourd'hui pour discuter de votre projet ou pour en savoir plus sur nos initiatives de développement économique.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#" class="bg-white text-primary px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-gray-100 transition-colors">Nous contacter</a>
+        <a href="#" class="bg-transparent text-white border-2 border-white px-6 py-3 rounded-button font-medium whitespace-nowrap hover:bg-white hover:text-primary transition-colors">En savoir plus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <a href="index.html" class="text-primary text-3xl font-display flex items-center space-x-2">
+  <img src="img/logo_CNECGPC.png" alt="Logo CNECGPC" class="h-20 w-auto" />
+  
+</a>
+          <p class="text-gray-400 mb-4">La Coordination Nationale d'Etudes et Conseils des Grands Projets du Congo, une institution dédiée à la revitalisation économique de la République Démocratique du Congo (RDC).</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-facebook-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-youtube-fill"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">À propos</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Projets</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Actualités</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Financement</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Formation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Études de marché</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accompagnement</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partenariats</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <i class="ri-map-pin-line mt-1 text-primary"></i>
+              <span class="text-gray-400">Avenue de la Révolution, N°123<br>Kinshasa, RDC</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-phone-line text-primary"></i>
+              <span class="text-gray-400">+243 
+0998 325 189</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-mail-line text-primary"></i>
+              <span class="text-gray-400">contact@cnecgpc.cd</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-time-line text-primary"></i>
+              <span class="text-gray-400">Lun-Ven: 8h-17h</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2025 La Coordination Nationale d'Etudes et Conseils des Grands Projets du Congo [CNECGPC]. Tous droits réservés.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Politique de confidentialité</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector('.lg\\:hidden');
+      const mobileMenu = document.createElement('div');
+      mobileMenu.id = 'mobile-nav';
+      mobileMenu.className = 'fixed inset-0 bg-white z-50 hidden flex-col items-center justify-center';
+      mobileMenu.innerHTML = `
+        <button class="absolute top-6 right-6 text-gray-700" id="close-mobile-nav">
+          <i class="ri-close-line text-3xl"></i>
+        </button>
+        <nav class="flex flex-col items-center gap-8">
+          <a href="index.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Accueil</a>
+          <a href="propos.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">À propos</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Services</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Projets</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Actualités</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Contact</a>
+        </nav>
+      `;
+      document.body.appendChild(mobileMenu);
+
+      // Toggle mobile menu
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+      });
+
+      // Close mobile menu
+      document.getElementById('close-mobile-nav').addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+
+      // Close menu when clicking on a link
+      mobileMenu.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          mobileMenu.classList.remove('flex');
+        });
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in, .scale-in').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

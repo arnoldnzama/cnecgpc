@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institution de Développement Économique - RDC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#00a651',
+            secondary: '#0d8657',
+            dark: '#1a1a1a',
+            light: '#f8f9fa'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+   .hero-gradient {
+      background: linear-gradient(135deg, rgba(0,166,81,0.95) 0%, rgba(13,134,87,0.9) 100%), url('img/logo_CNECGPC.png') no-repeat center center;
+      background-size: cover;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #00a651;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .scale-in {
+      transform: scale(0.98);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .scale-in.visible {
+      transform: scale(1);
+      opacity: 1;
+    }
+  </style>
+</head>
+<html lang="fr" class="scroll-smooth">
+<body class="min-h-screen bg-white font-sans text-gray-800">
+  <!-- Header -->
+  <header class="w-full bg-white/90 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between border-b border-gray-100">
+      <div class="flex items-center">
+        <!-- Ajoutez ceci où vous souhaitez afficher le logo et le lien -->
+<a href="index.html" class="text-primary text-3xl font-display flex items-center space-x-2">
+  <img src="img/logo_CNECGPC.png" alt="Logo CNECGPC" class="h-20 w-auto" />
+  
+</a>
+        <nav class="hidden lg:flex ml-10">
+           <a href="index.html" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Accueil</a>
+          <a href="propos.html" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">À propos</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Services</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Projets</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Actualités</a>
+          <a href="#" class="mx-4 text-gray-700 hover:text-primary nav-link py-2">Contact</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="lg:hidden text-gray-700">
+          <i class="ri-menu-line text-2xl"></i>
+        </button>
+        <a href="#" class="bg-primary text-white px-4 sm:px-6 py-2 rounded-button whitespace-nowrap hover:bg-secondary transition-colors">Rejoignez-nous</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="w-full relative pt-40 pb-16 md:pt-56 md:pb-24 hero-gradient transition-all duration-1000 transform opacity-0 -translate-y-5" data-animate>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518455027249-c2c7a9a57daf?q=80&w=1000')] bg-cover bg-center opacity-20"></div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        <div class="w-full lg:w-1/2">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">À propos de notre institution</h1>
+          <p class="text-white text-lg md:text-xl mb-8 opacity-90">Découvrez notre histoire, notre organisation et notre cadre institutionnel..</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  
+
+  <!-- About Content Section -->
+  <section class="py-16 bg-white transition-all duration-500 transform opacity-0 -translate-y-5" data-animate>
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2">
+          <!-- Historique professionnel -->
+          <div class="mb-16 transition-all duration-500 transform opacity-0 translate-y-5" data-animate-child style="transition-delay: 100ms">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2 transition-all duration-500 transform opacity-0 translate-y-5" data-animate-child style="transition-delay: 200ms">Historique professionnel</h2>
+            <div class="space-y-6 text-gray-600">
+              <p>Mon parcours professionnel s'étend sur plus de [X] années, marqué par des expériences diversifiées et des réalisations concrètes dans le domaine du développement économique.</p>
+              
+              <div class="space-y-8">
+                <!-- Expérience 1 -->
+                <div class="pl-6 border-l-2 border-primary">
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <span class="font-semibold text-primary">2018 - Présent</span>
+                    <h3 class="text-xl font-semibold">Directeur Général</h3>
+                    <span class="text-gray-500">Institution de Développement Économique</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-1">
+                    <li>Pilotage stratégique de l'institution</li>
+                    <li>Mise en œuvre de programmes nationaux</li>
+                    <li>Gestion d'une équipe de [X] collaborateurs</li>
+                  </ul>
+                </div>
+
+                <!-- Expérience 2 -->
+                <div class="pl-6 border-l-2 border-primary">
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <span class="font-semibold text-primary">2015 - 2018</span>
+                    <h3 class="text-xl font-semibold">Consultant Senior</h3>
+                    <span class="text-gray-500">Cabinet Conseil International</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-1">
+                    <li>Accompagnement de projets de développement</li>
+                    <li>Analyse des politiques économiques</li>
+                    <li>Formation des acteurs locaux</li>
+                  </ul>
+                </div>
+
+                <!-- Expérience 3 -->
+                <div class="pl-6 border-l-2 border-primary">
+                  <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                    <span class="font-semibold text-primary">2010 - 2015</span>
+                    <h3 class="text-xl font-semibold">Chargé de Mission</h3>
+                    <span class="text-gray-500">Ministère de l'Économie</span>
+                  </div>
+                  <ul class="mt-2 list-disc pl-5 space-y-1">
+                    <li>Élaboration de politiques sectorielles</li>
+                    <li>Coordination des partenariats internationaux</li>
+                    <li>Rédaction de rapports stratégiques</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Organigramme -->
+          <div class="mb-16 fade-in" style="transition-delay: 300ms">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">Organigramme</h2>
+            <div class="bg-gray-50 p-6 rounded-xl">
+              <img src="img/organigrammes.png" alt="Organigramme de l'institution" class="w-full lg:w-1/2 h-auto rounded-lg shadow mx-auto">
+              <div class="mt-4 text-center">
+                <a href="doc/PROJETS SIMILAIRES REALISES.pdf" class="inline-flex items-center text-primary font-medium">
+                  <i class="ri-download-line mr-2"></i> Télécharger l'organigramme (PDF)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Équipe dirigeante -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2 transition-all duration-500 transform hover:scale-105 hover:text-primary inline-block">Équipe dirigeante</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Team Member 1 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-4 text-center transition-all duration-500 hover:border-primary hover:shadow-md transform hover:-translate-y-1">
+                <img src="img/BKT.jpg" alt="Coordinateur Principal" class="w-20 h-20 rounded-full object-cover">
+                <div>
+                  <h3 class="text-xl font-semibold">BOLA NKUMU TOUSSAINT</h3>
+                  <p class="text-primary font-medium mb-2">Coordinateur Principal</p>
+                  <div class="flex gap-3 justify-center">
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-twitter-x-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-linkedin-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-instagram-line"></i></a>
+                </div>
+              </div>
+                  </div>
+              <!-- Team Member 2 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-4 text-center transition-all duration-500 hover:border-primary hover:shadow-md transform hover:-translate-y-1">
+                <img src="img/logo_CNECGPC.png" alt="Directeur des Programmes" class="w-20 h-20 rounded-full object-cover">
+                <div>
+                  <h3 class="text-xl font-semibold">[NOM COMPLET]</h3>
+                  <p class="text-primary font-medium mb-2">Directeur des Programmes</p>
+                  <div class="flex gap-3 justify-center">
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-twitter-x-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-linkedin-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-instagram-line"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Team Member 3 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-4 text-center transition-all duration-500 hover:border-primary hover:shadow-md transform hover:-translate-y-1">
+                <img src="img/logo_CNECGPC.png" alt="Directeur Financier" class="w-20 h-20 rounded-full object-cover">
+                <div>
+                  <h3 class="text-xl font-semibold">[NOM COMPLET]</h3>
+                  <p class="text-primary font-medium mb-2">Directeur Financier</p>
+                  <div class="flex gap-3 justify-center">
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-twitter-x-fill"></i></a>
+                   <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-linkedin-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-instagram-line"></i></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Team Member 4 -->
+              <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center gap-4 text-center transition-all duration-500 hover:border-primary hover:shadow-md transform hover:-translate-y-1">
+                <img src="img/logo_CNECGPC.png" alt="Directeur des Ressources Humaines" class="w-20 h-20 rounded-full object-cover">
+                <div>
+                  <h3 class="text-xl font-semibold">[NOM COMPLET]</h3>
+                  <p class="text-primary font-medium mb-2">Directeur RH</p>
+                  <div class="flex gap-3 justify-center">
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-twitter-x-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-linkedin-fill"></i></a>
+                    <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="ri-instagram-line"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cadre juridique -->
+          <div>
+            <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b pb-2">Cadre juridique</h2>
+            <div class="space-y-6 text-gray-600">
+              <p>Notre institution est régie par :</p>
+              <ul class="list-disc pl-6 space-y-2">
+                <li>Loi n°[XXX] du [DATE] portant création</li>
+                <li>Décret n°[XXX] du [DATE] fixant les statuts</li>
+                <li>Convention de siège avec le Gouvernement</li>
+                <li>Règlement intérieur approuvé le [DATE]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar - Downloads -->
+        <div class="lg:col-span-1">
+          <div class="bg-gray-50 p-6 rounded-xl sticky top-6">
+            <h3 class="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Téléchargements</h3>
+            <div class="space-y-4">
+              <a href="pdf/statuts.pdf" class="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow transition-all">
+                <i class="ri-file-text-line text-2xl text-primary"></i>
+                <div>
+                  <p class="font-medium">Statuts de l'institution</p>
+                  <p class="text-sm text-gray-500">PDF • 1.2MB</p>
+                </div>
+              </a>
+              <a href="pdf/rapport-annuel.pdf" class="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow transition-all">
+                <i class="ri-file-chart-line text-2xl text-primary"></i>
+                <div>
+                  <p class="font-medium">Rapport annuel 2023</p>
+                  <p class="text-sm text-gray-500">PDF • 5.4MB</p>
+                </div>
+              </a>
+              <a href="pdf/plan-strategique.pdf" class="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow transition-all">
+                <i class="ri-file-list-line text-2xl text-primary"></i>
+                <div>
+                  <p class="font-medium">Plan stratégique 2024-2028</p>
+                  <p class="text-sm text-gray-500">PDF • 3.1MB</p>
+                </div>
+              </a>
+              <a href="pdf/reglement-interieur.pdf" class="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow transition-all">
+                <i class="ri-file-paper-line text-2xl text-primary"></i>
+                <div>
+                  <p class="font-medium">Règlement intérieur</p>
+                  <p class="text-sm text-gray-500">PDF • 0.8MB</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8 transition-all duration-1000 transform opacity-0 translate-y-5" data-animate>
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <a href="index.html" class="text-primary text-3xl font-display flex items-center space-x-2">
+  <img src="img/logo_CNECGPC.png" alt="Logo CNECGPC" class="h-20 w-auto" />
+  
+</a>
+          <p class="text-gray-400 mb-4">La Coordination Nationale d'Etudes et Conseils des Grands Projets du Congo, une institution dédiée à la revitalisation économique de la République Démocratique du Congo (RDC).</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-facebook-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-linkedin-fill"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-primary transition-colors">
+              <i class="ri-youtube-fill"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Liens rapides</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accueil</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">À propos</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Projets</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Actualités</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Services</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Financement</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Formation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Études de marché</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Accompagnement</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Partenariats</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Consultance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <i class="ri-map-pin-line mt-1 text-primary"></i>
+              <span class="text-gray-400">Avenue de la Révolution, N°123<br>Kinshasa, RDC</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-phone-line text-primary"></i>
+              <span class="text-gray-400">+243 
+0998 325 189</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-mail-line text-primary"></i>
+              <span class="text-gray-400">contact@CNECGPC.cd</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="ri-time-line text-primary"></i>
+              <span class="text-gray-400">Lun-Ven: 8h-17h</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2025 La Coordination Nationale d'Etudes et Conseils des Grands Projets du Congo [CNECGPC]. Tous droits réservés.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Politique de confidentialité</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Conditions d'utilisation</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Dynamic section animations
+      const animateSections = () => {
+        const sections = document.querySelectorAll('[data-animate]');
+        const windowHeight = window.innerHeight;
+        const triggerOffset = windowHeight * 0.8;
+
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const sectionBottom = section.getBoundingClientRect().bottom;
+
+          if (sectionTop < triggerOffset && sectionBottom > 0) {
+            section.classList.add('opacity-100', 'translate-y-0');
+          } else {
+            section.classList.remove('opacity-100', 'translate-y-0');
+          }
+        });
+      };
+
+      // Initialize animations
+      animateSections();
+      window.addEventListener('scroll', animateSections);
+      window.addEventListener('resize', animateSections);
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector('.lg\\:hidden');
+      const mobileMenu = document.createElement('div');
+      mobileMenu.className = 'fixed inset-0 bg-white z-50 hidden flex-col items-center justify-center';
+      mobileMenu.innerHTML = `
+        <button class="absolute top-6 right-6 text-gray-700">
+          <i class="ri-close-line text-3xl"></i>
+        </button>
+        <nav class="flex flex-col items-center gap-8">
+          <a href="index.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Accueil</a>
+          <a href="propos.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">À propos</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Services</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Projets</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Actualités</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Contact</a>
+        </nav>
+      `;
+      document.body.appendChild(mobileMenu);
+
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+      });
+
+      mobileMenu.querySelector('button').addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in, .scale-in').forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Child elements animations
+      const animateChildElements = () => {
+        const parents = document.querySelectorAll('[data-animate]');
+        parents.forEach(parent => {
+          if (parent.classList.contains('opacity-100')) {
+            const children = parent.querySelectorAll('[data-animate-child]');
+            children.forEach(child => {
+              child.classList.add('opacity-100', 'translate-y-0');
+            });
+          }
+        });
+      };
+
+      // Combine animations
+      const combinedAnimate = () => {
+        animateSections();
+        animateChildElements();
+      };
+
+      // Initialize animations
+      combinedAnimate();
+      window.addEventListener('scroll', combinedAnimate);
+      window.addEventListener('resize', combinedAnimate);
+
+      // Tab switching
+      const tabs = document.querySelectorAll('.flex.justify-center.mb-8 button');
+      const contents = document.querySelectorAll('#news-documents-section > div:not(.flex)');
+      
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          // Update active tab
+          tabs.forEach(t => {
+            t.classList.remove('text-white', 'bg-primary');
+            t.classList.add('text-gray-600', 'hover:text-primary');
+          });
+          tab.classList.add('text-white', 'bg-primary');
+          tab.classList.remove('text-gray-600', 'hover:text-primary');
+          
+          // Show corresponding content
+          contents.forEach(content => content.classList.add('hidden'));
+          contents[index].classList.remove('hidden');
+        });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <!-- À placer avant </body> dans index.html et propos.html -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionne le bouton menu mobile
+    const mobileMenuButton = document.querySelector('.lg\\:hidden');
+    if (!mobileMenuButton) return;
+
+    // Crée le menu mobile s'il n'existe pas déjà
+    let mobileMenu = document.getElementById('mobile-nav');
+    if (!mobileMenu) {
+      mobileMenu = document.createElement('div');
+      mobileMenu.id = 'mobile-nav';
+      mobileMenu.className = 'fixed inset-0 bg-white z-50 hidden flex-col items-center justify-center';
+      mobileMenu.innerHTML = `
+        <button class="absolute top-6 right-6 text-gray-700" id="close-mobile-nav">
+          <i class="ri-close-line text-3xl"></i>
+        </button>
+        <nav class="flex flex-col items-center gap-8">
+          <a href="index.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Accueil</a>
+          <a href="propos.html" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">À propos</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Services</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Projets</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Actualités</a>
+          <a href="#" class="text-2xl text-gray-700 hover:text-primary nav-link py-2">Contact</a>
+        </nav>
+      `;
+      document.body.appendChild(mobileMenu);
+    }
+
+    // Ouvre le menu mobile
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+    });
+
+    // Ferme le menu mobile
+    mobileMenu.addEventListener('click', function(e) {
+      if (
+        e.target.id === 'close-mobile-nav' ||
+        e.target.closest('#close-mobile-nav')
+      ) {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      }
+    });
+  });
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>
